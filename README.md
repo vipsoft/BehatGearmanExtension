@@ -81,9 +81,7 @@ If using remote workers, make sure the Gearman job server allows connections fro
 hosts.  On Ubuntu, you'll want to edit `/etc/default/gearman-job-server` as it defaults
 to only accepting local connections:
 
-    ``` bash
     PARAMS="--listen=127.0.0.1"
-    ```
 
 The default `task_name` is **behat**.
 
@@ -93,7 +91,7 @@ names that will override `task name`.  Each feature-level tag corresponds to a t
 The following example shows how custom tags can be used to target specific workers (e.g.,
 operating system and/or browser combinations):
 
-    ``` yaml
+
     # behat-client.yml
     default:
       # ...
@@ -103,9 +101,8 @@ operating system and/or browser combinations):
           custom_task_names:
             - firefox
             - ie9
-    ```
+***
 
-    ``` yaml
     # behat-worker-1.yml
     default:
       # ...
@@ -114,9 +111,8 @@ operating system and/or browser combinations):
           # ...
           custom_task_names:
             - firefox
-    ```
+***
 
-    ``` yaml
     # behat-worker-2.yml
     default:
       # ...
@@ -125,17 +121,15 @@ operating system and/or browser combinations):
           # ...
           custom_task_names:
             - ie9
-    ```
+***
 
-    ```
     @firefox
     Feature: A Firefox-specific test
-    ```
+***
 
-    ```
     @firefox @ie9
     Feature: A cross-browser test
-    ```
+
 
 The default `access_token` is **null**.  In the case of remote workers, it is recommended that
 you set this to a secret value as a security precaution.
@@ -146,15 +140,15 @@ The default `compression` is **false**.
 
 After installing the extension, spin up one or more behat workers:
 
-    ``` bash
+
     $> php vendor/bin/behat --config behat-worker.yml
-    ```
+
 
 Then start up the behat client:
 
-    ``` bash
+
     $> php vendor/bin/behat --config behat-client.yml
-    ```
+
 
 ## Copyright
 
