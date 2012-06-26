@@ -1,0 +1,34 @@
+{
+    "name": "vipsoft/gearman-extension",
+    "type": "behat-extension",
+    "description": "Gearman extension for Behat",
+    "keywords": ["behat", "bdd", "gearman", "job", "worker", "parallel"],
+    "homepage": "http://github.com/vipsoft/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anthon Pang",
+            "email": "apang@softwaredevelopment.ca"
+        }
+    ],
+
+    "require": {
+        "php":                      ">=5.3.6",
+        "ext-json":                 "*",
+        "ext-gearman":              "*",
+        "behat/behat":              ">=2.4.0,<2.5.0-dev",
+        "symfony/framework-bundle": ">=2.0.0,<2.2.0-dev"
+    },
+
+    "suggest": {
+        "ext-zlib": "Allows for data compression between client and worker"
+    },
+
+    "require-dev": {
+        "symfony/symfony": "dev-master"
+    },
+
+    "autoload": {
+        "psr-0": { "VIPSoft\\GearmanExtension": "src/" }
+    }
+}

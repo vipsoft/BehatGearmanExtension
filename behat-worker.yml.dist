@@ -1,0 +1,12 @@
+default:
+  formatter:
+    name: recorder
+
+  extensions:
+    VIPSoft\GearmanExtension\Extension:
+      gearman_server:    ~
+      task_name:         ~
+      custom_task_names: ~
+      access_token:      ~
+      compression:       ~
+      command_class:     VIPSoft\GearmanExtension\Console\Command\GearmanWorkerCommand
