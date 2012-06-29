@@ -19,7 +19,7 @@ Through Composer
 ----------------
 1. Set dependencies in your **composer.json**:
 
-::
+.. code-block:: js
 
     {
         "require": {
@@ -30,10 +30,10 @@ Through Composer
 
 2. Install/update your vendors:
 
-::
+.. code-block:: bash
 
-    $> curl http://getcomposer.org/installer | php
-    $> php composer.phar install
+    $ curl http://getcomposer.org/installer | php
+    $ php composer.phar install
 
 Through PHAR
 ------------
@@ -45,7 +45,7 @@ Configuration
 =============
 1. Activate extension in your **behat-client.yml**:
 
-::
+.. code-block:: yaml
 
     # behat-client.yml
     default:
@@ -61,7 +61,7 @@ Configuration
 
 2. Activate extension in your **behat-worker.yml**:
 
-::
+.. code-block:: yaml
 
     # behat-worker.yml
     default:
@@ -86,7 +86,7 @@ Configure the **gearman_server** setting to be a centralized Gearman job server.
 
 If using remote workers, make sure the Gearman job server allows connections from remote hosts.  On Ubuntu, you'll want to edit **/etc/default/gearman-job-server** as it defaults to only accepting local connections:
 
-::
+.. code-block:: bash
 
     PARAMS="--listen=127.0.0.1"
 
@@ -96,7 +96,7 @@ The default **custom_task_names** is `null`.  This is an array of allowable, fea
 
 The following example shows how custom tags can be used to target specific workers (e.g., operating system and/or browser combinations):
 
-::
+.. code-block:: yaml
 
     # behat-client.yml
     default:
@@ -108,7 +108,7 @@ The following example shows how custom tags can be used to target specific worke
             - firefox
             - ie9
 
-::
+.. code-block:: yaml
 
     # behat-worker-1.yml
     default:
@@ -119,7 +119,7 @@ The following example shows how custom tags can be used to target specific worke
           custom_task_names:
             - firefox
 
-::
+.. code-block:: yaml
 
     # behat-worker-2.yml
     default:
@@ -130,12 +130,12 @@ The following example shows how custom tags can be used to target specific worke
           custom_task_names:
             - ie9
 
-::
+.. code-block:: gherkin
 
     @firefox
     Feature: A Firefox-specific test
 
-::
+.. code-block:: gherkin
 
     @firefox @ie9
     Feature: A cross-browser test
@@ -149,16 +149,16 @@ Usage
 =====
 After installing the extension, spin up one or more behat workers:
 
-::
+.. code-block:: bash
 
-    $> php vendor/bin/behat --config behat-worker.yml
+    $ php vendor/bin/behat --config behat-worker.yml
 
 
 Then start up the behat client:
 
-::
+.. code-block:: bash
 
-    $> php vendor/bin/behat --config behat-client.yml
+    $ php vendor/bin/behat --config behat-client.yml
 
 Copyright
 =========
