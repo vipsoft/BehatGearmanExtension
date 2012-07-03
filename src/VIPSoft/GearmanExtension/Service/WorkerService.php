@@ -120,7 +120,7 @@ class WorkerService
          */
         $work = $this->codecService->decode($job->workload());
 
-        if (!($work instanceof Payload)
+        if (! $work instanceof Payload
             || (isset($this->accessToken) && $work->getAccessToken() !== $this->accessToken)
         ) {
             return;

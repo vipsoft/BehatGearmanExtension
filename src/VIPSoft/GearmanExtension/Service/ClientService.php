@@ -166,7 +166,7 @@ class ClientService
          */
         $result = $this->codecService->decode($task->data());
 
-        if (!($result instanceof Payload)
+        if (! $result instanceof Payload
             || (isset($this->accessToken) && $result->getAccessToken() !== $this->accessToken)
         ) {
             return;
