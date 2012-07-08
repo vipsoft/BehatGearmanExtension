@@ -8,7 +8,8 @@
     "authors": [
         {
             "name": "Anthon Pang",
-            "email": "apang@softwaredevelopment.ca"
+            "email": "apang@softwaredevelopment.ca",
+            "role": "developer"
         }
     ],
     "require": {
