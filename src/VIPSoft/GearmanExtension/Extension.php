@@ -21,10 +21,7 @@ use Behat\Behat\Extension\ExtensionInterface;
 class Extension implements ExtensionInterface
 {
     /**
-     * Loads a specific configuration.
-     *
-     * @param array            $config    Extension configuration hash (from behat.yml)
-     * @param ContainerBuilder $container ContainerBuilder instance
+     * {@inheritdoc}
      */
     public function load(array $config, ContainerBuilder $container)
     {
@@ -49,9 +46,7 @@ class Extension implements ExtensionInterface
     }
 
     /**
-     * Setups configuration for current extension.
-     *
-     * @param ArrayNodeDefinition $builder
+     * {@inheritdoc}
      */
     public function getConfig(ArrayNodeDefinition $builder)
     {
@@ -80,9 +75,7 @@ class Extension implements ExtensionInterface
     }
 
     /**
-     * Returns compiler passes used by mink extension.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getCompilerPasses()
     {
