@@ -17,13 +17,10 @@
         "ext-json": "*",
         "ext-gearman": "*",
         "behat/behat": ">=2.4.0,<2.5.0",
-        "symfony/config": ">=2.0.0,<2.2.0",
-        "symfony/dependency-injection": ">=2.0.0,<2.2.0",
-        "symfony/console": ">=2.0.0,<2.2.0",
-        "symfony/event-dispatcher": ">=2.0.0,<2.2.0"
-    },
-    "require-dev": {
-        "symfony/symfony": "dev-master"
+        "symfony/config": ">=2.0.0,<2.3.0",
+        "symfony/dependency-injection": ">=2.0.0,<2.3.0",
+        "symfony/console": ">=2.0.0,<2.3.0",
+        "symfony/event-dispatcher": ">=2.0.0,<2.3.0"
     },
     "suggest": {
         "ext-zlib": "Allows for data compression between client and worker"
