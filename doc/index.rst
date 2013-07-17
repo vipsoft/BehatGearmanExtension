@@ -67,7 +67,7 @@ Configuration
     default:
       # ...
       formatter:
-        name:    proxy
+        name:    recorder
       # ...
       extensions:
         VIPSoft\GearmanExtension\Extension:
@@ -143,7 +143,7 @@ The following example shows how custom tags can be used to target specific worke
 
 The default **access_token** is `null`.  In the case of remote workers, it is recommended that you set this to a secret value as a security precaution.
 
-The default **compression** is `false`.
+The default **compression** is `false`.  If `true`, the zlib extension is required to compress messages between the client and workers.
 
 Usage
 =====

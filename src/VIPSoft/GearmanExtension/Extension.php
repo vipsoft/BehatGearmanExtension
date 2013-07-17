@@ -29,9 +29,21 @@ class Extension implements ExtensionInterface
         $loader->load('core.xml');
 
         $container->setParameter('behat.gearman.gearman_server', $config['gearman_server']);
+
+        if (!isset($config['task_name']) && !isset($config['custom_task_names'])) {
+            $config['task_name'] = 'behat';
+        }
+
         $container->setParameter('behat.gearman.task_name', $config['task_name']);
+
         $container->setParameter('behat.gearman.custom_task_names', $config['custom_task_names']);
+
         $container->setParameter('behat.gearman.access_token', $config['access_token']);
+
+        if (!isset($config['compression'])) {
+            $config['compression'] = false;
+        }
+
         $container->setParameter('behat.gearman.compression', $config['compression']);
 
         if (isset($config['command_class'])) {
