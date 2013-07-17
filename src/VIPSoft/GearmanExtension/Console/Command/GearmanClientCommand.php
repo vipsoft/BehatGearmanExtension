@@ -33,9 +33,10 @@ class GearmanClientCommand extends BehatCommand
             // and use a worker to run it in FeatureTester
             foreach ($features as $feature) {
                 $task = array(
-                    'path'   => $feature->getFile(),
-                    'dryRun' => $this->isDryRun(),
-                    'strict' => $this->isStrict(),
+                    'path'    => $feature->getFile(),
+                    'dryRun'  => $this->isDryRun(),
+                    'strict'  => $this->isStrict(),
+                    'filters' => $gherkin->getFilters(),
                 );
 
                 $work = $clientService->create();

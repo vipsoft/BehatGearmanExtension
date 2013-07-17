@@ -29,6 +29,7 @@ class GearmanWorkerCommand extends BehatCommand
      */
     public function runFeature($task)
     {
+        $gherkin = $this->getContainer()->get('gherkin');
         $eventService = $this->getContainer()->get('behat.gearman.service.event');
         $eventService->flushEvents();
 
@@ -39,9 +40,11 @@ class GearmanWorkerCommand extends BehatCommand
             $this->setDryRun((boolean) $task['dryRun']);
             $this->setStrict((boolean) $task['strict']);
 
+            $gherkin->setFilters($task['filters']);
+
             $this->beforeSuite();
 
-            parent::runFeatures($this->getContainer()->get('gherkin'));
+            parent::runFeatures($gherkin);
 
             $this->afterSuite();
         }
