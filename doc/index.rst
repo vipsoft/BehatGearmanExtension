@@ -43,6 +43,12 @@ Download the .phar archive:
 
 Configuration
 =============
+
+Bare Minimum
+------------
+
+Following configuration should be enough to run all of your tests on local gearman server.
+
 1. Activate extension in your **behat-client.yml**:
 
 .. code-block:: yaml
@@ -52,11 +58,6 @@ Configuration
       # ...
       extensions:
         VIPSoft\GearmanExtension\Extension:
-          gearman_server:    ~
-          task_name:         ~
-          custom_task_names: ~
-          access_token:      ~
-          compression:       ~
           command_class:     VIPSoft\GearmanExtension\Console\Command\GearmanClientCommand
 
 2. Activate extension in your **behat-worker.yml**:
@@ -67,19 +68,15 @@ Configuration
     default:
       # ...
       formatter:
-        name:    proxy
+        name:    recorder
       # ...
       extensions:
         VIPSoft\GearmanExtension\Extension:
-          gearman_server:    ~
-          task_name:         ~
-          custom_task_names: ~
-          access_token:      ~
-          compression:       ~
           command_class:     VIPSoft\GearmanExtension\Console\Command\GearmanWorkerCommand
 
 Settings
 --------
+
 Obviously, the configuration settings below should be shared between the client and workers.
 
 Configure the **gearman_server** setting to be a centralized Gearman job server.  The default is `127.0.0.1:4730` (i.e., port 4730 on the local host).
@@ -90,9 +87,11 @@ If using remote workers, make sure the Gearman job server allows connections fro
 
     PARAMS="--listen=127.0.0.1"
 
-The default **task_name** is `behat`.
+The default **task_name** is `behat` (runs all tests).
 
 The default **custom_task_names** is `null`.  This is an array of allowable, feature-level tag names that will override **task name**.  Each feature-level tag corresponds to a task.
+
+NOTE: `~` means `null`, it does not mean "default value". You should specify **task_name** / **custom_task_names** OR remove them from config to use default value (which is `behat`).
 
 The following example shows how custom tags can be used to target specific workers (e.g., operating system and/or browser combinations):
 
@@ -110,7 +109,7 @@ The following example shows how custom tags can be used to target specific worke
 
 .. code-block:: yaml
 
-    # behat-worker-1.yml
+    # behat-worker-firefox.yml
     default:
       # ...
       extensions:
@@ -121,7 +120,7 @@ The following example shows how custom tags can be used to target specific worke
 
 .. code-block:: yaml
 
-    # behat-worker-2.yml
+    # behat-worker-ie9.yml
     default:
       # ...
       extensions:
@@ -143,7 +142,7 @@ The following example shows how custom tags can be used to target specific worke
 
 The default **access_token** is `null`.  In the case of remote workers, it is recommended that you set this to a secret value as a security precaution.
 
-The default **compression** is `false`.
+The default **compression** is `false`. If `true`, the communication with gearman server will be compressed with Zlib (as long as zlib php extension is enable and set). This might save some traffic in case of the remote workers.
 
 Usage
 =====

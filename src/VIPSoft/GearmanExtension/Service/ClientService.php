@@ -89,6 +89,10 @@ class ClientService
         $this->codecService    = $codecService;
         $this->taskId          = 1;
 
+        if (!$this->taskName && !$this->customTaskNames) {
+            throw new \Exception('Please specify "task_name" or at least one "custom_task_name" in order to run gearman client ("~" is null, not a "default value".)');
+        }
+
         $this->createClient();
     }
 
